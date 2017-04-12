@@ -334,8 +334,11 @@ md-toolbar.default-toolbar:not(.md-menu-toolbar) {
         display: none;
     }
 
-    prm-facet md-checkbox[aria-label="Expand My Results"] {
-  	display: none;  	
-    }
+
+    
+
+
+
+   
 
 
