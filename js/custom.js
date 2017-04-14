@@ -50,16 +50,21 @@ document.body.appendChild(s);
 //add Show Results for
 app.component('prmFacetAfter', {
     controller: function($location) {
+
+	/* Construct query strings and parameters */
 	var path = $location.absUrl().split('?')[0];
 	var searchTerm = $location.search().query.split(',')[2];
 	var query = $location.search().query;
-        var tab = '&tab=default_tab';
+    var tab = '&tab=default_tab';
 	var scope = '&search_scope=01CALS';
 	var sort = $location.search().sortby;
 	var rest = '&vid=01CALS_SJO&lang=en_US&offset=0';
+
+	/* Populate variables and links */
 	var csulink = path+'?query='+query+tab+scope+'&sortby='+sort+rest;
 	var sjplink = 'http://discover.sjlibrary.org/iii/encore_sjpl/search/C__S'+searchTerm+'__Orightresult__U?lang=eng&suite=sjpl';
 
+		/* Output -Show Results for- output */
         angular.element(document).ready(function () {
            var eNode = angular.element(document.querySelectorAll("prm-facet .sidebar-inner-wrapper"));
            if (eNode != null && eNode != undefined){
