@@ -72,7 +72,7 @@ app.component('prmFacetAfter', {
            }
 
 	   var rNode = angular.element(document.querySelectorAll("div[ng-if='$ctrl.showPcAvailability']"));
-	   if (rNode != null && eNode != undefined){
+	   if (rNode != null && rNode != undefined){
 		rNode.remove();
 	   }
         });
