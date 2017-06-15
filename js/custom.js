@@ -70,13 +70,29 @@ app.component('prmFacetAfter', {
            if (eNode != null && eNode != undefined){
 		eNode.prepend("<div tabindex='-1' ng-if='$ctrl.totalResults > 1 || $ctrl.isFiltered()' class='sidebar-section compensate-padding-left'><h2 class='sidebar-title' >Show Results for</h2></div><div tabindex='-1' class='sidebar-section margin-top-small margin-bottom-medium compensate-padding-left'><div class='layout-row margin-bottom-small bold-text'><a href='"+sjplink+"' target='_blank' title='San Jose Public Library'>San Jose Public Library</a></div><div class='layout-row margin-bottom-small bold-text'><a href='"+csulink+"' target='_blank' title='California State University'>California State University</a></div></div>");
            }
-
-	   var rNode = angular.element(document.querySelectorAll("div[ng-if='$ctrl.showPcAvailability']"));
-	   if (rNode != null && rNode != undefined){
-		rNode.remove();
-	   }
         });
+
+	/* hide Expand More Results  */
+    var vm = this;
+	vm.parentCtrl.showPcAvailability = false;
+
      }
 });
 
 
+//overrite user area
+app.component('prmUserAreaAfter', {
+    bindings: {
+        parentCtrl: '<'
+    },
+    controller: function($compile, $scope, $templateCache, $element) {
+      $templateCache.put('components/search/topbar/userArea/user-area.html', `
+          <div layout='row' layout-align="center center">
+            <prm-library-card-menu></prm-library-card-menu>
+            <prm-authentication layout="flex" [is-logged-in]="$ctrl.userName().length > 0"></prm-authentication>
+          </div>`);
+
+      $compile($element.parent())($scope);
+
+    }
+});
